@@ -134,55 +134,33 @@
         {{ slotPropsFromCurrentUser.userNm.lastName }}
       </current-user>
     </div>
-    <div>
-      <DynamicSlotNamesComp>
-        <template #[dynamicSlotName]>
-          DynamicSlotNamesComp 上書きできました
-        </template>
-      </DynamicSlotNamesComp>
-    </div>
-    <div>
-      <DynamicSlotNamesComp>
-        <template v-for="(item, index) of arrDynamicSlotNames" #[item]>
-          DynamicSlotNamesComp v-forと動的なslot名 上書きできました , index:
-          {{ index }}
-        </template>
-      </DynamicSlotNamesComp>
-    </div>
 
-    <!-- <div>
-      <current-user :items="listItems">
-        <div slot-scope="row"
-					   class="list-item1">
-							 component cha:{{row.item.text}}
-				</div>
-      </current-user>
-    </div> -->
-    <!-- <div>
-      <slot-name01>
-        aaa
-        <div class="myclass01">
-          <template slot="SlotName01Header01">
-          </template>
-        </div>
-        <div>
-          <template slot="SlotName01Body01"></template>
-        </div>
-      </slot-name01>
-    </div> -->
-    <!-- <div>
-      <v-switch-case>
-        <template slot:default>
-          <button>default slot</button>
+    <div>
+      <WrapperVSlot>
+        <template v-slot:WrapperVSlotHeader>
+          <h1>WrapperVSlot HEAD</h1>
         </template>
-        <template slot:slot01>
-          <button>slot01</button>
+        <template #WrapperVSlotFooter>
+          <div>WrapperVSlot footer</div>
         </template>
-        <template name="slot02">
-          <button>slot02</button>
+      </WrapperVSlot>
+    </div>
+    <div>
+      <v-switch-case :value="itemLocalType">
+        <template #text>
+          <div class="v-switch-text-01">
+            <input type="text" id="fname" name="fname" />
+            <button type="button">Click Me! v-switch-case text</button>
+          </div>
+        </template>
+        <template #pwd>
+          <div class="v-switch-pwd-01">
+            <input type="password" id="pwd" name="pwd" />
+            <button type="button">Click Me! v-switch-case pwd</button>
+          </div>
         </template>
       </v-switch-case>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -204,11 +182,12 @@ import TabPosts from "./components/tab/TabPosts.vue";
 import Card from "./components/slot/Card.vue";
 import CurrentUser from "./components/slot/CurrentUser.vue";
 import DynamicSlotNamesComp from "./components/slot/DynamicSlotNamesComp.vue";
+import WrapperVSlot from "./components/slot/WrapperVSlot.vue";
 import SlotName01 from "./components/slot/SlotName01.vue";
-import Slot01 from "./components/slot/Slot01.vue";
-import Slot02 from "./components/slot/Slot02.vue";
-import Slot03 from "./components/slot/Slot03.vue";
-import Slot04 from "./components/slot/Slot04.vue";
+// import Slot01 from "./components/slot/Slot01.vue";
+// import Slot02 from "./components/slot/Slot02.vue";
+// import Slot03 from "./components/slot/Slot03.vue";
+// import Slot04 from "./components/slot/Slot04.vue";
 
 export default {
   name: "app",
@@ -248,8 +227,9 @@ export default {
         { text: "Third item", icon: "fa fa-cut" },
       ],
       dynamicSlotName: "header",
-      arrDynamicSlotNames: ['header', 'footer'],
-
+      arrDynamicSlotNames: ["header", "footer"],
+      // itemLocalType: "text",
+      itemLocalType: "pwd",
     };
   },
   computed: {
@@ -281,7 +261,6 @@ export default {
     currentTabComponent: function () {
       return "tab-" + this.currentTabKey.toLowerCase();
     },
-   
   },
   components: {
     CompHeader,
@@ -299,12 +278,13 @@ export default {
     TabPosts,
     Card,
     SlotName01,
-    Slot01,
-    Slot02,
-    Slot03,
-    Slot04,
+    // Slot01,
+    // Slot02,
+    // Slot03,
+    // Slot04,
     CurrentUser,
     DynamicSlotNamesComp,
+    WrapperVSlot,
   },
   methods: {
     changeTitleOnClick: function (event) {
