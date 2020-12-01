@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" id="slotCardDivParent">
     <header class="card-header">
       <slot name="header"></slot>
     </header>

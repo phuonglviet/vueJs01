@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div id="divTestId">aaaaaaaa</div>
+    <div>
+      <Menu />
+      <router-view />
+    </div>
     <div>
       <label for="txtContent">{{ content }}</label>
       <input type="text" name="" id="txtContent" v-model.trim="content" />
@@ -12,6 +17,7 @@
     <comp-header
       v-bind:titleHeader="title"
       v-on:changeTitleEvent="handleChangeTitle"
+      ref="compHeaderId"
     ></comp-header>
     <img src="./assets/logo.png" />
     <h1>{{ msg }}</h1>
@@ -184,6 +190,7 @@ import CurrentUser from "./components/slot/CurrentUser.vue";
 import DynamicSlotNamesComp from "./components/slot/DynamicSlotNamesComp.vue";
 import WrapperVSlot from "./components/slot/WrapperVSlot.vue";
 import SlotName01 from "./components/slot/SlotName01.vue";
+import Menu from "./layout/Menu.vue";
 // import Slot01 from "./components/slot/Slot01.vue";
 // import Slot02 from "./components/slot/Slot02.vue";
 // import Slot03 from "./components/slot/Slot03.vue";
@@ -285,6 +292,7 @@ export default {
     CurrentUser,
     DynamicSlotNamesComp,
     WrapperVSlot,
+    Menu,
   },
   methods: {
     changeTitleOnClick: function (event) {
@@ -379,23 +387,32 @@ export default {
     },
   },
   beforeCreate() {
-    console.log("beforeCreate:", this.title);
+    console.log("App component beforeCreate:", this.title);
   },
   created() {
     // thường gọi API, call Ajax get data
-    console.log("created:", this.title);
+    console.log("App component created:", this.title);
   },
   beforeMount() {
-    console.log("beforeMount:", this.title);
+    console.log("App component beforeMount:", this.title);
   },
   mounted() {
-    console.log("mounted:", this.title);
+    console.log("App component mounted:", this.title);
+
+    // this.$nextTick().then(function () { }); => gọi trong main.js lúc new Vue({ -> mounted()
+  
+        console.log("document ready!");
+        var btn = $("#compHeaderH1Title");
+        console.log("compHeaderH1Title:", btn.html());
+
+        var div = $("#slotCardDivParent");
+        console.log("slotCardDivParent:", div.html());
   },
   beforeDestroy() {
-    console.log("beforeDestroy:", this.title);
+    console.log("App component beforeDestroy:", this.title);
   },
   destroyed() {
-    console.log("destroyed:", this.title);
+    console.log("App component destroyed:", this.title);
   },
 };
 </script>

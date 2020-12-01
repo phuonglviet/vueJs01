@@ -1,7 +1,7 @@
 <template>
   <header>
-    <h1>{{ text }} - {{ titleHeader }} <br/>
-      <button v-on:click="changeTitleHeader">Thay doi title header</button>
+    <h1 id="compHeaderH1Title" ref="compHeaderH1Title">{{ text }} - {{ titleHeader }} <br/>
+      <button id="compHeaderBtnChangeTitle" v-on:click="changeTitleHeader">Thay doi title header</button>
     </h1>
   </header>
 </template>
@@ -29,7 +29,10 @@ export default {
       }
       this.$emit('changeTitleEvent', data);
     }
-  }
+  },
+  mounted() {
+    console.log("Comp Header component mounted:");
+  },
 };
 </script>
 
