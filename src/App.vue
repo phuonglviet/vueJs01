@@ -167,6 +167,11 @@
         </template>
       </v-switch-case>
     </div>
+    <div>
+      <DemoRef ref="demoRefComp"/>
+      DemoRef no input {{ computedDemoRefCompFirstName  }}
+      <button @click="getInputFromChildComponent">Get input from child component by ref</button>
+    </div>
   </div>
 </template>
 
@@ -268,6 +273,13 @@ export default {
     currentTabComponent: function () {
       return "tab-" + this.currentTabKey.toLowerCase();
     },
+
+    computedDemoRefCompFirstName() {
+      // khong get duoc do component con load khong dong bo
+      console.log("this.$refs.demoRefComp:", this.$refs.demoRefComp)
+      // return this.$refs.demoRefComp.firstName;
+      return "aaa"
+    },
   },
   components: {
     CompHeader,
@@ -347,6 +359,12 @@ export default {
 
       this.$store.dispatch("storeTodos/actionTodoAdd", newTodo);
     },
+
+    getInputFromChildComponent(event) {
+      console.log("his.$refs.demoRefComp.firstName:", this.$refs.demoRefComp.firstName);
+      console.log("his.$refs.demoRefComp:", this.$refs.demoRefComp.$refs.inputFirstName.value);
+      this.$refs.demoRefComp.$refs.fileInputAvatar.click();
+    }
   },
   watch: {
     // watch data

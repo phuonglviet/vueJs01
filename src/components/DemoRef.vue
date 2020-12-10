@@ -2,6 +2,7 @@
   <div class="demo-ref">
       <h1>Demo reference</h1>
       <input type="file" style="display:none" ref="fileInputAvatar"/>
+      <input type="text" v-model="firstName" ref="inputFirstName"/>
       <button class="avatar" v-on:click="btnAvatarOnClick">Thay doi avatar</button>
   </div>
 </template>
@@ -11,7 +12,7 @@ export default {
     name: "demo-ref",
     data() {
         return {
-
+            firstName: "John Smith First Name",
         }
     },
     methods:{
