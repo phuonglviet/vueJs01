@@ -1,8 +1,16 @@
 <template>
   <div id="app">
     <div id="divTestId">aaaaaaaa</div>
+    <div class="purple darken-2 text-center">
+      <span class="white--text">Lorem ipsum</span>
+    </div>
     <div>
       <Menu />
+    </div>
+    <div>
+      <AppToolbar />
+    </div>
+    <div>
       <router-view />
     </div>
     <div>
@@ -168,9 +176,14 @@
       </v-switch-case>
     </div>
     <div>
-      <DemoRef ref="demoRefComp"/>
-      DemoRef no input {{ computedDemoRefCompFirstName  }}
-      <button @click="getInputFromChildComponent">Get input from child component by ref</button>
+      <DemoRef ref="demoRefComp" />
+      DemoRef no input {{ computedDemoRefCompFirstName }}
+      <button @click="getInputFromChildComponent">
+        Get input from child component by ref
+      </button>
+    </div>
+    <div>
+      <AppFooter />
     </div>
   </div>
 </template>
@@ -196,6 +209,8 @@ import DynamicSlotNamesComp from "./components/slot/DynamicSlotNamesComp.vue";
 import WrapperVSlot from "./components/slot/WrapperVSlot.vue";
 import SlotName01 from "./components/slot/SlotName01.vue";
 import Menu from "./layout/Menu.vue";
+import AppToolbar from "./useVuetify/AppToolbar.vue";
+import AppFooter from "./useVuetify/AppFooter.vue";
 // import Slot01 from "./components/slot/Slot01.vue";
 // import Slot02 from "./components/slot/Slot02.vue";
 // import Slot03 from "./components/slot/Slot03.vue";
@@ -276,9 +291,9 @@ export default {
 
     computedDemoRefCompFirstName() {
       // khong get duoc do component con load khong dong bo
-      console.log("this.$refs.demoRefComp:", this.$refs.demoRefComp)
+      console.log("this.$refs.demoRefComp:", this.$refs.demoRefComp);
       // return this.$refs.demoRefComp.firstName;
-      return "aaa"
+      return "aaa";
     },
   },
   components: {
@@ -305,6 +320,8 @@ export default {
     DynamicSlotNamesComp,
     WrapperVSlot,
     Menu,
+    AppToolbar,
+    AppFooter,
   },
   methods: {
     changeTitleOnClick: function (event) {
@@ -361,10 +378,16 @@ export default {
     },
 
     getInputFromChildComponent(event) {
-      console.log("his.$refs.demoRefComp.firstName:", this.$refs.demoRefComp.firstName);
-      console.log("his.$refs.demoRefComp:", this.$refs.demoRefComp.$refs.inputFirstName.value);
+      console.log(
+        "his.$refs.demoRefComp.firstName:",
+        this.$refs.demoRefComp.firstName
+      );
+      console.log(
+        "his.$refs.demoRefComp:",
+        this.$refs.demoRefComp.$refs.inputFirstName.value
+      );
       this.$refs.demoRefComp.$refs.fileInputAvatar.click();
-    }
+    },
   },
   watch: {
     // watch data
@@ -418,13 +441,13 @@ export default {
     console.log("App component mounted:", this.title);
 
     // this.$nextTick().then(function () { }); => gọi trong main.js lúc new Vue({ -> mounted()
-  
-        console.log("document ready!");
-        var btn = $("#compHeaderH1Title");
-        console.log("compHeaderH1Title:", btn.html());
 
-        var div = $("#slotCardDivParent");
-        console.log("slotCardDivParent:", div.html());
+    console.log("document ready!");
+    var btn = $("#compHeaderH1Title");
+    console.log("compHeaderH1Title:", btn.html());
+
+    var div = $("#slotCardDivParent");
+    console.log("slotCardDivParent:", div.html());
   },
   beforeDestroy() {
     console.log("App component beforeDestroy:", this.title);
@@ -471,3 +494,4 @@ export default {
   padding: 10px;
 }
 </style>
+

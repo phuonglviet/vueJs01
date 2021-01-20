@@ -3,6 +3,8 @@ import Home from '@pages/Home';
 import User from '@pages/user/User';
 import UserDetail from '@pages/user/UserDetail';
 import UserEdit from '@pages/user/UserEdit';
+import AppLogin from '@useVuetify/AppLogin.vue';
+import AppGridSystem from '@useVuetify/AppGridSystem.vue';
 
 export default new Router({
     mode: "history",
@@ -26,6 +28,16 @@ export default new Router({
             path: "/user-edit",
             name: "userEditPage",
             component: UserEdit
+        },
+        {
+            path: "/login",
+            name: "appLogin",
+            component: AppLogin
+        },
+        {
+            path: "/gridSystem",
+            name: "appGridSystem",
+            component: AppGridSystem
         },
     ],
 }

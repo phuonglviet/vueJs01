@@ -7,11 +7,36 @@
       Placeat temporibus praesentium expedita doloribus fugit, ad architecto.
       Impedit, veritatis.
     </p>
+    <div>
+      <v-btn
+      color="success"
+      class="red--text"
+      style="color: green"
+      @click="callVueGlobalMethod"
+      >Global component button</v-btn
+    >
+    </div>
   </div>
 </template>
 
+
 <script>
-export default {};
+import Vue from 'vue'
+
+export default {
+  name: "comp-footer",
+  data() {
+    return {
+    };
+  },
+  computed: {
+  },
+  methods: {
+    callVueGlobalMethod() {
+      Vue.myGlobalMethod();
+    }
+  },
+};
 </script>
 
 <style>
