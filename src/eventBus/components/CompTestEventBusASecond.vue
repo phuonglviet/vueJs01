@@ -1,5 +1,5 @@
 <template>
-    <div>Component B: {{msg}}</div>
+    <div>Component CompTestEventBusASecond: {{msg}}</div>
 </template>
 
 <script>

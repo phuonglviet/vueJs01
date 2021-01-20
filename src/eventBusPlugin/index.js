@@ -7,6 +7,10 @@ import Vue from 'vue'
 
 class EventBus {
     constructor() {
+        // thuộc tính bus được khởi tạo trong constructor với giá trị bằng việc tạo mới 1 object Vue
+        // Những gì ta về cơ bản nhận được là một thành phần hoàn toàn tách rời khỏi DOM
+        // Những gì ta về cơ bản nhận được là một thành phần hoàn toàn tách rời khỏi DOM hoặc phần còn lại của ứng dụng Vue.
+        // Tất cả những gì tồn tại trên đó là các phương thức hay thuộc tính của nó, vì vậy, nó khá nhẹ 
         this.bus = new Vue()
     }
 
@@ -42,6 +46,7 @@ class EventBus {
 
     /**
      * Emit the given event.
+     * emit là để phát ra 1 event đi toàn bộ ứng dụng Vue bus này
      *
      * @param {string|object} event
      * @param {...*} args

@@ -14,7 +14,10 @@
       <v-text-field v-else v-model="currentValue" @blur="handleBlur" />
     </div>
     <div>
-      <CompTestEventBusA/>
+      <CompTestEventBusA />
+    </div>
+    <div>
+      <TestEventBusPluginApp />
     </div>
   </div>
 </template>
@@ -24,14 +27,16 @@
 // import { mask, TheMask } from "vue-the-mask";
 // import { VueMaskDirective } from 'v-mask'
 import MaskData from "maskdata";
-import CompTestEventBusA from '@/eventBus/CompTestEventBusA.vue'
+import TestEventBusPluginApp from "@/testEventBusPlugin/TestEventBusPluginApp.vue";
+import CompTestEventBusA from "@/eventBus/CompTestEventBusA.vue";
 
 export default {
   name: "comp-footer",
   // directives: { VueMaskDirective },
   // Vue.directive('mask', VueMaskDirective),
-  components: { 
-    CompTestEventBusA 
+  components: {
+    CompTestEventBusA,
+    TestEventBusPluginApp,
   },
   data() {
     return {
