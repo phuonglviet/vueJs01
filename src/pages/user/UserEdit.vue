@@ -19,6 +19,38 @@
     <div>
       <TestEventBusPluginApp />
     </div>
+    <div>
+      <v-btn
+        color="success"
+        class="red--text"
+        style="color: green"
+        @click="openSnackBar"
+        >Click to open snackbar plugin by envent bus and Adding Instance Properties</v-btn>
+    </div>
+    <div class="text-center ma-2">
+      <v-btn
+        dark
+        @click="snackbar = true"
+      >
+        Open Snackbar
+      </v-btn>
+      <v-snackbar
+        v-model="snackbar"
+      >
+        {{ text }}
+  
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="pink"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </div>
   </div>
 </template>
 
@@ -51,6 +83,8 @@ export default {
           },
         },
       },
+      snackbar: false,
+      text: `Hello, I'm a snackbar`,
     };
   },
   computed: {
@@ -87,14 +121,14 @@ export default {
   },
   methods: {
     handleInput: function (event) {
-      console.log("handleInput");
+      // console.log("handleInput");
     },
     handleFocus: function (event) {
-      console.log("handleFocus");
+      // console.log("handleFocus");
       this.isMasked = !this.isMasked;
     },
     handleBlur: function (event) {
-      console.log("handleBlur");
+      // console.log("handleBlur");
       this.isMasked = !this.isMasked;
     },
     maskPassFunction: function (password) {
@@ -111,6 +145,9 @@ export default {
         maskPasswordOptions
       );
       return maskedPassword;
+    },
+    openSnackBar() {
+      this.$snackbar.show({ text: "一括登録処理が成功しました。" });
     },
   },
 };

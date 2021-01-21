@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <app-snackbar />
     <div id="divTestId">aaaaaaaa</div>
     <div class="purple darken-2 text-center">
       <span class="white--text">Lorem ipsum</span>
@@ -261,7 +262,6 @@ export default {
   },
   computed: {
     getCount() {
-      // console.log("this.$store.state", this.$store.state);
       return this.$store.state.storeCounter.count;
     },
 
@@ -281,7 +281,6 @@ export default {
     },
 
     getTodos() {
-      // console.log("this.$store.storeTodos:", this.$store.state.storeTodos.todos);
       return this.$store.state.storeTodos.todos;
     },
 
@@ -291,7 +290,6 @@ export default {
 
     computedDemoRefCompFirstName() {
       // khong get duoc do component con load khong dong bo
-      console.log("this.$refs.demoRefComp:", this.$refs.demoRefComp);
       // return this.$refs.demoRefComp.firstName;
       return "aaa";
     },
@@ -329,7 +327,6 @@ export default {
     },
 
     handleChangeTitle(data) {
-      console.log("handleChangeTitle on Ap.vue");
       // this.title = 'Tu Hoc VueJS online'
       this.title = data.title;
     },
@@ -378,14 +375,6 @@ export default {
     },
 
     getInputFromChildComponent(event) {
-      console.log(
-        "his.$refs.demoRefComp.firstName:",
-        this.$refs.demoRefComp.firstName
-      );
-      console.log(
-        "his.$refs.demoRefComp:",
-        this.$refs.demoRefComp.$refs.inputFirstName.value
-      );
       this.$refs.demoRefComp.$refs.fileInputAvatar.click();
     },
   },
@@ -393,25 +382,25 @@ export default {
     // watch data
     // content() {
     content: function () {
-      console.log("watch data: content changed");
+      // console.log("watch data: content changed");
     },
     // watch computed
     reverseContentComputed() {
-      console.log("watch computed: Computed content changed changed");
+      // console.log("watch computed: Computed content changed changed");
     },
     // watch data object
     question: {
       deep: true,
       handler() {
-        console.log("watch data object: question changed");
+        // console.log("watch data object: question changed");
       },
     },
     // watch data object only some property
     getQuestionType() {
-      console.log("watch data object only type property: question changed");
+      // console.log("watch data object only type property: question changed");
     },
     getQuestionText() {
-      console.log("watch data object only text property: question changed");
+      // console.log("watch data object only text property: question changed");
     },
 
     // Whenever the movie prop changes, fetch new data
@@ -423,37 +412,37 @@ export default {
         fetch(`/${movie}`).then((data) => {
           this.movieData = data;
         });
-        console.log("watch data movie has start!");
+        // console.log("watch data movie has start!");
       },
     },
   },
   beforeCreate() {
-    console.log("App component beforeCreate:", this.title);
+    // console.log("App component beforeCreate:", this.title);
   },
   created() {
     // thường gọi API, call Ajax get data
-    console.log("App component created:", this.title);
+    // console.log("App component created:", this.title);
   },
   beforeMount() {
-    console.log("App component beforeMount:", this.title);
+    // console.log("App component beforeMount:", this.title);
   },
   mounted() {
-    console.log("App component mounted:", this.title);
+    // console.log("App component mounted:", this.title);
 
     // this.$nextTick().then(function () { }); => gọi trong main.js lúc new Vue({ -> mounted()
 
-    console.log("document ready!");
+    // console.log("document ready!");
     var btn = $("#compHeaderH1Title");
-    console.log("compHeaderH1Title:", btn.html());
+    // console.log("compHeaderH1Title:", btn.html());
 
     var div = $("#slotCardDivParent");
-    console.log("slotCardDivParent:", div.html());
+    // console.log("slotCardDivParent:", div.html());
   },
   beforeDestroy() {
-    console.log("App component beforeDestroy:", this.title);
+    // console.log("App component beforeDestroy:", this.title);
   },
   destroyed() {
-    console.log("App component destroyed:", this.title);
+    // console.log("App component destroyed:", this.title);
   },
 };
 </script>

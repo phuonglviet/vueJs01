@@ -39,12 +39,12 @@ export default {
     onGlobalCompBtnClick: function (event) {
       this.currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
       Vue.myGlobalMethod = () => {
-        console.log("myGlobalMethod");
+        // console.log("myGlobalMethod");
       };
     },
     callVueGlobalMethod() {
       Vue.myGlobalMethod();
-    }
+    },
   },
 };
 </script>

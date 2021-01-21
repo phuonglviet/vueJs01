@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted() {
-    console.log("Comp Header component mounted:");
+    // console.log("Comp Header component mounted:");
   },
 };
 </script>

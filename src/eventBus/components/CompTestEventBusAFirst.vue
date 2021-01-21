@@ -2,11 +2,16 @@
   <div>
     <input placeholder="Enter Text Here" v-model="tempMessage" />
     <div>
+      <v-btn @click="sendMessage" color="success" style="color: green"
+        >Click to Event bus emit data</v-btn
+      >
       <v-btn
-        @click="sendMessage"
         color="success"
-        style="color: green;"
-        >Click to Event bus emit data</v-btn>
+        class="red--text"
+        style="color: green"
+        @click="callAddingInstanceProperties"
+        >call adding instance properties</v-btn
+      >
     </div>
   </div>
 </template>
@@ -24,6 +29,12 @@ export default {
     sendMessage() {
       EventBus01.$emit("EventBusInputData01", this.tempMessage);
       this.tempMessage = "";
+    },
+    callAddingInstanceProperties() {
+      this.$vueAddingInstancePropertiesMethod01.call({
+        text: "ファイルサイズは200MB以下にしてください。",
+        type: "error",
+      });
     },
   },
 };

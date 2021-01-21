@@ -1,3 +1,6 @@
+// we need our modal component
+import AppSnackBar from './components/AppSnackBar.vue'
+
 /**
  *  tạo EventBus theo dạng như kiểu 1 plugin
  *
@@ -5,13 +8,13 @@
 
 import Vue from 'vue'
 
-class EventBus {
+class Snackbar {
     constructor() {
-        // thuộc tính bus được khởi tạo trong constructor với giá trị bằng việc tạo mới 1 object Vue
+        // thuộc tính EventBus được khởi tạo trong constructor với giá trị bằng việc tạo mới 1 object Vue
         // Những gì ta về cơ bản nhận được là một thành phần hoàn toàn tách rời khỏi DOM
         // Những gì ta về cơ bản nhận được là một thành phần hoàn toàn tách rời khỏi DOM hoặc phần còn lại của ứng dụng Vue.
         // Tất cả những gì tồn tại trên đó là các phương thức hay thuộc tính của nó, vì vậy, nó khá nhẹ 
-        this.bus = new Vue()
+        this.EventBus = new Vue()
     }
 
     /**
@@ -21,7 +24,7 @@ class EventBus {
      * @param {function} handler
      */
     on(event, handler) {
-        this.bus.$on(event, handler)
+        this.EventBus.$on(event, handler)
     }
 
     /**
@@ -31,7 +34,7 @@ class EventBus {
      * @param {function} handler
      */
     once(event, handler) {
-        this.bus.$once(event, handler)
+        this.EventBus.$once(event, handler)
     }
 
     /**
@@ -41,26 +44,31 @@ class EventBus {
      * @param {function} handler
      */
     off(event, handler) {
-        this.bus.$off(event, handler)
+        this.EventBus.$off(event, handler)
     }
 
     /**
      * Emit the given event.
-     * emit là để phát ra 1 event đi toàn bộ ứng dụng Vue bus này
+     * emit là để phát ra 1 event đi toàn bộ ứng dụng Vue EventBus này
      *
      * @param {string|object} event
      * @param {...*} args
      */
     emit(event, ...args) {
-        this.bus.$emit(event, ...args)
+        this.EventBus.$emit(event, ...args)
+    }
+
+    show(params) {
+        this.emit('showSnackbar', params)
     }
 }
 
 export default {
     // called by Vue.use(eventBusPlugin)
     install(Vue, options) {
-        const eventBus = new EventBus()
+        const eventBus = new Snackbar();
 
-        Vue.prototype.$bus = eventBus
+        Vue.prototype.$snackbar = eventBus;
     },
 }
+
