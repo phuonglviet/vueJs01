@@ -51,6 +51,10 @@
         </template>
       </v-snackbar>
     </div>
+    <div>
+      <InputEmail v-model="myEmail" label="Input email:"/>
+      Email: {{ myEmail }}
+    </div>
   </div>
 </template>
 
@@ -61,6 +65,7 @@
 import MaskData from "maskdata";
 import TestEventBusPluginApp from "@/testEventBusPlugin/TestEventBusPluginApp.vue";
 import CompTestEventBusA from "@/eventBus/CompTestEventBusA.vue";
+import InputEmail from "@/components/common/InputEmail.vue";
 
 export default {
   name: "comp-footer",
@@ -69,6 +74,7 @@ export default {
   components: {
     CompTestEventBusA,
     TestEventBusPluginApp,
+    InputEmail,
   },
   data() {
     return {
@@ -85,6 +91,8 @@ export default {
       },
       snackbar: false,
       text: `Hello, I'm a snackbar`,
+      myEmail:"",
+
     };
   },
   computed: {
