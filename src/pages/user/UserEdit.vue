@@ -25,35 +25,37 @@
         class="red--text"
         style="color: green"
         @click="openSnackBar"
-        >Click to open snackbar plugin by envent bus and Adding Instance Properties</v-btn>
+        >Click to open snackbar plugin by envent bus and Adding Instance
+        Properties</v-btn
+      >
     </div>
     <div class="text-center ma-2">
-      <v-btn
-        dark
-        @click="snackbar = true"
-      >
-        Open Snackbar
-      </v-btn>
-      <v-snackbar
-        v-model="snackbar"
-      >
+      <v-btn dark @click="snackbar = true"> Open Snackbar </v-btn>
+      <v-snackbar v-model="snackbar">
         {{ text }}
-  
+
         <template v-slot:action="{ attrs }">
-          <v-btn
-            color="pink"
-            text
-            v-bind="attrs"
-            @click="snackbar = false"
-          >
+          <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
             Close
           </v-btn>
         </template>
       </v-snackbar>
     </div>
     <div>
-      <InputEmail v-model="myEmail" label="Input email:"/>
-      Email: {{ myEmail }}
+      <InputEmail v-model="myEmail" label="Input email:" />
+      My Email: {{ myEmail }}
+    </div>
+    <div>
+      <input v-model="secondEmail" placeholder="Input sencond email:" />
+      My second email: {{ secondEmail }}
+    </div>
+    <div>
+      <div>{{ myDivContent }}</div>
+      <MyDivContent v-model="myDivContent" />
+    </div>
+    <div class="wrapper">
+      <MyDatePicker v-model="datePickerVal" />
+      <p>Month: {{ datePickerVal.month }} Year: {{ datePickerVal.year }}</p>
     </div>
   </div>
 </template>
@@ -66,6 +68,8 @@ import MaskData from "maskdata";
 import TestEventBusPluginApp from "@/testEventBusPlugin/TestEventBusPluginApp.vue";
 import CompTestEventBusA from "@/eventBus/CompTestEventBusA.vue";
 import InputEmail from "@/components/common/InputEmail.vue";
+import MyDivContent from "@/components/common/MyDivContent.vue";
+import MyDatePicker from "@/components/common/MyDatePicker.vue";
 
 export default {
   name: "comp-footer",
@@ -75,6 +79,8 @@ export default {
     CompTestEventBusA,
     TestEventBusPluginApp,
     InputEmail,
+    MyDivContent,
+    MyDatePicker,
   },
   data() {
     return {
@@ -91,8 +97,13 @@ export default {
       },
       snackbar: false,
       text: `Hello, I'm a snackbar`,
-      myEmail:"",
-
+      myEmail: "myEmail@gmail.com",
+      secondEmail: "secondEmail@gmail.com",
+      myDivContent: "",
+      datePickerVal: {
+        month: 1,
+        year: 2017,
+      },
     };
   },
   computed: {

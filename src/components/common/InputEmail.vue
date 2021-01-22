@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label>{{ label }}</label>
+    <div>{{ label }}</div>
     <p>
       <input
         class="input"
@@ -29,7 +29,7 @@ export default {
 
   data() {
     return {
-      //   value: "",
+      // content: this.value
     };
   },
   methods: {
