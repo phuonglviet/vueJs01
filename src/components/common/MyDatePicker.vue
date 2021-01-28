@@ -1,6 +1,7 @@
 <template>
   <div class="date-picker">
     Month:
+    <!-- #region  -->
     <input
       type="number"
       ref="monthPicker"
@@ -14,6 +15,7 @@
       :value="value.year"
       @input="updateDate()"
     />
+    <!-- #endregion -->
   </div>
 </template>
 
@@ -23,6 +25,7 @@ export default {
     value: Object,
   },
   methods: {
+    //#region methods
     updateDate() {
       this.$emit("input", {
         month: +this.$refs.monthPicker.value,
@@ -30,5 +33,6 @@ export default {
       });
     },
   },
+  //#endregion
 };
 </script>

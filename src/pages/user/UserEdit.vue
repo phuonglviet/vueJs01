@@ -8,17 +8,21 @@
       est dicta!
     </p>
     <CompGlobal01 />
+    <v-divider />
     <div>
       <v-text-field v-if="isMasked" :value="maskPass" @focus="handleFocus" />
       <!-- <v-text-field v-if="isMasked" :value="maskPassword" @focus="handleFocus" /> -->
       <v-text-field v-else v-model="currentValue" @blur="handleBlur" />
     </div>
+     <v-divider />
     <div>
       <CompTestEventBusA />
     </div>
+     <v-divider />
     <div>
       <TestEventBusPluginApp />
     </div>
+     <v-divider />
     <div>
       <v-btn
         color="success"
@@ -41,6 +45,7 @@
         </template>
       </v-snackbar>
     </div>
+     <v-divider />
     <div>
       <InputEmail v-model="myEmail" label="Input email:" />
       My Email: {{ myEmail }}
@@ -53,10 +58,24 @@
       <div>{{ myDivContent }}</div>
       <MyDivContent v-model="myDivContent" />
     </div>
+     <v-divider />
     <div class="wrapper">
       <MyDatePicker v-model="datePickerVal" />
       <p>Month: {{ datePickerVal.month }} Year: {{ datePickerVal.year }}</p>
     </div>
+     <v-divider />
+    <div>
+      <ProvideComp>
+        <!-- <InjectComp> </InjectComp> -->
+      </ProvideComp>
+    </div>
+     <v-divider />
+    <div>
+      <ProvideCompUseSlot>
+        <InjectCompUseSlot />
+      </ProvideCompUseSlot>
+    </div>
+     <v-divider />
   </div>
 </template>
 
@@ -70,6 +89,10 @@ import CompTestEventBusA from "@/eventBus/CompTestEventBusA.vue";
 import InputEmail from "@/components/common/InputEmail.vue";
 import MyDivContent from "@/components/common/MyDivContent.vue";
 import MyDatePicker from "@/components/common/MyDatePicker.vue";
+// import InjectComp from "@/provideInject/InjectComp.vue";
+import ProvideComp from "@/provideInject/ProvideComp.vue";
+import InjectCompUseSlot from "@/provideInject/InjectCompUseSlot.vue";
+import ProvideCompUseSlot from "@/provideInject/ProvideCompUseSlot.vue";
 
 export default {
   name: "comp-footer",
@@ -81,6 +104,10 @@ export default {
     InputEmail,
     MyDivContent,
     MyDatePicker,
+    // InjectComp,
+    ProvideComp,
+    InjectCompUseSlot,
+    ProvideCompUseSlot,
   },
   data() {
     return {

@@ -183,6 +183,8 @@
         Get input from child component by ref
       </button>
     </div>
+    <v-divider/>
+    <v-divider/>
     <div>
       <AppFooter />
     </div>
@@ -482,5 +484,9 @@ export default {
   border: 1px solid #ccc;
   padding: 10px;
 }
+.help-text.danger {
+  color: red;
+}
+
 </style>
 
