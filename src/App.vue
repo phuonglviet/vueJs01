@@ -18,13 +18,15 @@
       <label for="txtContent">{{ content }}</label>
       <input type="text" name="" id="txtContent" v-model.trim="content" />
     </div>
-    <CompHeader titleHeader="title" />
+    <CompHeader titleHeader="title" :hocsinh="hocsinhData"/>
+    <span> Tên học sinh: {{hocsinhData.ten}}</span><br>
     <button v-on:click="changeTitleOnClick">
       Thay doi title tu comment App.vue
     </button>
     <!-- <CompHeader></CompHeader> -->
     <comp-header
       v-bind:titleHeader="title"
+      :hocsinh="hocsinhData"
       v-on:changeTitleEvent="handleChangeTitle"
       ref="compHeaderId"
     ></comp-header>
@@ -83,7 +85,7 @@
       <button v-on:click="addNewTodoOnClick">Add todo</button>
     </div>
     <div>
-      <comp-render01 :level="3">
+      <comp-render01 :level="6">
         <template>
           <div>
             <span>Test CompRender01. This is slot</span>
@@ -225,6 +227,9 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App",
       title: "Hello VueJS - For Header",
+      hocsinhData: {
+        ten: "Nguyen van A"
+      },
       listUser: [
         { id: 100, email: "user0@example.com", active: true },
         { id: 101, email: "user1@example.com", active: false },

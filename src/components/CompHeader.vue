@@ -3,6 +3,7 @@
     <h1 id="compHeaderH1Title" ref="compHeaderH1Title">{{ text }} - {{ titleHeader }} <br/>
       <button id="compHeaderBtnChangeTitle" v-on:click="changeTitleHeader">Thay doi title header</button>
     </h1>
+    Thay doi title: <input type="text" v-model="hocsinh.ten"/>
   </header>
 </template>
 
@@ -14,6 +15,9 @@ export default {
       language: {
         type: String,
         default: "en-US"
+      },
+      hocsinh: {
+        ten: "",
       },
   },
   data() {
